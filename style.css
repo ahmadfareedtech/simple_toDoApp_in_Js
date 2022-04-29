@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #c7c7c7;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    font-size: 3rem;
+    width: 100%;
+    height: 6rem;
+    background-color: aqua;
+    justify-content: space-between;
+}
+
+.title {
+    align-self: center;
+}
+
+nav ul {
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30rem;
+}
+
+nav ul li {}
+
+.container {
+    background-color: rgb(206, 255, 127);
+    height: 85vh;
+}
+
+footer {
+    background-color: blueviolet;
+    height: 7vh;
+}
