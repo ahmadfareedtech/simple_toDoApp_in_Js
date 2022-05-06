@@ -10,9 +10,28 @@
   </head>
 
   <body>
+    <div class="overlay"></div>
+    <div class="model">
+      <svg
+        class="close__model"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+    </div>
+
     <nav>
       <img src="imgs/logo_256px.png" alt="" class="logo" />
-      <span class="title">Welcome to do App</span>
+      <span class="title">Welcome to To do App</span>
       <ul>
         <li>About</li>
         <li>Login</li>
@@ -20,7 +39,9 @@
       </ul>
     </nav>
     <main class="container">
-      <div class="left__nav"></div>
+      <div class="left__nav">
+        <button class="add__new__btn">Add New Task</button>
+      </div>
       <div class="right__panel">
         <svg
           class="svg__grad"
