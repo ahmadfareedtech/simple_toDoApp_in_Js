@@ -240,6 +240,8 @@ nav img {
   width: 100%;
   border-radius: 20px;
   box-shadow: 3px 3px 5px #00154f;
+
+  /* overflow: hidden; */
 }
 
 .svg__grad {
@@ -247,6 +249,33 @@ nav img {
   position: absolute;
   right: 0;
   cursor: pointer;
+}
+
+.opened__task {
+  margin-top: 5rem;
+  padding-left: 10%;
+  padding-right: 20%;
+  height: 80%;
+
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  overflow: auto;
+}
+
+.ot__heading {
+  font-size: 5rem;
+}
+
+.ot__text {
+  font-size: 3rem;
+}
+
+.ot__title__text {
+  font-size: 3rem;
+  font-weight: 700;
 }
 
 footer {

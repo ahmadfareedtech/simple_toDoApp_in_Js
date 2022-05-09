@@ -10,6 +10,7 @@ const saveModelBtn = document.querySelector(".model__save");
 const taskContainer = document.querySelector(".tasks__container");
 
 let count = 0;
+let id = 0;
 
 // Data
 
@@ -37,7 +38,7 @@ gradChnange.addEventListener("click", function () {
     count = 0;
     rightPanel.classList.remove("grad__5");
   } else {
-    console.log(count);
+    // console.log(count);
     rightPanel.classList.remove(`grad__${count - 1}`);
     rightPanel.classList.add(`grad__${count}`);
   }
@@ -57,15 +58,26 @@ saveModelBtn.addEventListener("click", function () {
   }
 
   tasks.push({
+    id: ++id,
     title: title,
     description: desc,
   });
 
-  const html = `<div class="task">${title}</div>`;
+  const html = `<div class="task" data-id="${id}">${title}</div>`;
 
   taskContainer.insertAdjacentHTML("afterbegin", html);
 
   closeModel();
 
   console.log(tasks);
+});
+
+taskContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".task");
+  if (!clicked) return;
+  console.log(clicked);
+  console.log(clicked.dataset.id);
+  const el = tasks.find((e) => e.id == clicked.dataset.id);
+  if (!el) return;
+  console.log(el);
 });
