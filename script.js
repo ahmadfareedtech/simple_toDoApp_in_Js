@@ -5,9 +5,29 @@ const rightPanel = document.querySelector(".right__panel");
 const addNewBtn = document.querySelector(".add__new__btn");
 const model = document.querySelector(".model");
 const overlay = document.querySelector(".overlay");
-const closeModel = document.querySelector(".close__model");
+const closeModelBtn = document.querySelector(".close__model");
+const saveModelBtn = document.querySelector(".model__save");
+const taskContainer = document.querySelector(".tasks__container");
 
 let count = 0;
+
+// Data
+
+let tasks = [];
+
+///// functions ////
+
+const openModel = function () {
+  document.querySelector(".todo__title__inp").value = "";
+  document.querySelector(".todo__detail__inp").value = "";
+  model.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+};
+
+const closeModel = function () {
+  model.classList.add("hidden");
+  overlay.classList.add("hidden");
+};
 
 //////////// EVENT HANDLERS //////////
 
@@ -23,12 +43,29 @@ gradChnange.addEventListener("click", function () {
   }
 });
 
-addNewBtn.addEventListener("click", function () {
-  model.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-});
+addNewBtn.addEventListener("click", openModel);
 
-closeModel.addEventListener("click", function () {
-  model.classList.add("hidden");
-  overlay.classList.add("hidden");
+closeModelBtn.addEventListener("click", closeModel);
+
+saveModelBtn.addEventListener("click", function () {
+  const title = document.querySelector(".todo__title__inp").value;
+  const desc = document.querySelector(".todo__detail__inp").value;
+
+  if (title === "") {
+    alert("enter valid title");
+    return;
+  }
+
+  tasks.push({
+    title: title,
+    description: desc,
+  });
+
+  const html = `<div class="task">${title}</div>`;
+
+  taskContainer.insertAdjacentHTML("afterbegin", html);
+
+  closeModel();
+
+  console.log(tasks);
 });

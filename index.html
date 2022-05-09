@@ -10,8 +10,22 @@
   </head>
 
   <body>
-    <div class="overlay"></div>
-    <div class="model">
+    <div class="overlay hidden"></div>
+    <div class="model hidden">
+      <div class="model__content">
+        <div class="todo__title">Add Title</div>
+        <input class="todo__title__inp" type="text" />
+        <div class="todo__detail">Enter Detail</div>
+        <textarea
+          class="todo__detail__inp"
+          name="txta"
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+        <button class="model__save btn">Save</button>
+      </div>
+
       <svg
         class="close__model"
         xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +54,17 @@
     </nav>
     <main class="container">
       <div class="left__nav">
-        <button class="add__new__btn">Add New Task</button>
+        <button class="add__new__btn btn">Add New Task</button>
+        <div class="tasks__container">
+          <div class="task">Read Book</div>
+          <div class="task">Eat Bananas</div>
+          <div class="task">Exercise</div>
+          <div class="task">Go forsfsfdfdfdfadfaffasfasdf walk</div>
+          <div class="task">Take a nap</div>
+          <div class="task">Have shower</div>
+        </div>
       </div>
+
       <div class="right__panel">
         <svg
           class="svg__grad"
