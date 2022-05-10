@@ -22,13 +22,25 @@ body {
 .btn {
   border: none;
   border-radius: 8px;
+  padding: 3px 7px;
+  margin-right: 10px;
 
   box-shadow: 3px 3px 8px #000000;
   cursor: pointer;
 }
 
+.btn:hover {
+  background-color: #242c7b;
+  border: #5b86e5 solid 2px;
+  color: #36d1dc;
+}
+
 .hidden {
   display: none;
+}
+
+.completed {
+  background-color: chartreuse;
 }
 
 .overlay {
@@ -175,12 +187,6 @@ nav img {
   padding: 10px 15px;
 }
 
-.btn:hover {
-  background-color: #242c7b;
-  border: #5b86e5 solid 2px;
-  color: #36d1dc;
-}
-
 .tasks__container::-webkit-scrollbar {
   width: 6px; /* width of the entire scrollbar */
 }
@@ -276,6 +282,11 @@ nav img {
 .ot__title__text {
   font-size: 3rem;
   font-weight: 700;
+}
+
+.btns {
+  margin-top: 2rem;
+  margin-left: 10%;
 }
 
 footer {
