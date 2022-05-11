@@ -35,21 +35,13 @@ body {
   color: #36d1dc;
 }
 
-.hidden {
-  display: none;
-}
-
-.completed {
-  background-color: chartreuse;
-}
-
 .overlay {
   position: fixed;
   z-index: 25;
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .model {
@@ -247,7 +239,7 @@ nav img {
   border-radius: 20px;
   box-shadow: 3px 3px 5px #00154f;
 
-  /* overflow: hidden; */
+  overflow-x: auto;
 }
 
 .svg__grad {
@@ -271,8 +263,13 @@ nav img {
   overflow: auto;
 }
 
+.hidden {
+  display: none;
+}
+
 .ot__heading {
   font-size: 5rem;
+  text-decoration: underline;
 }
 
 .ot__text {
@@ -282,6 +279,7 @@ nav img {
 .ot__title__text {
   font-size: 3rem;
   font-weight: 700;
+  font-style: italic;
 }
 
 .btns {
@@ -303,7 +301,7 @@ footer {
 /*  gradiants */
 
 .grad__1 {
-  background-image: linear-gradient(to right bottom, #ff7e5f, #feb47b);
+  background-image: linear-gradient(to right bottom, #f97d5e, #a04e0f);
 }
 .grad__2 {
   background-image: linear-gradient(to right bottom, #c33764, #1d2671);

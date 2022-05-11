@@ -10,43 +10,32 @@ const saveModelBtn = document.querySelector(".model__save");
 const taskContainer = document.querySelector(".tasks__container");
 const openedTask = document.querySelector(".opened__task");
 const taskCompleteBtn = document.querySelector(".task__complete");
+const taskDescVal = document.getElementById("desc");
+const taskNameVal = document.querySelector(".ot__title__text");
 
 let count = 0;
-let id = 0;
-let currId = 0;
+let id = 0; // to assign different ids to tasks
+let currId = 0; // has current tasks Id that is open in right panel
 
 // Data
 
-let tasks = [];
+let tasks = []; // array to store objects of tasks
 
 ///// functions ////
 
+// renders left navigation's tasks list
 const renderLeftNavTasks = function () {
-  taskContainer.innerHTML = "";
+  taskContainer.innerHTML = ""; // clear the left nav
 
   let html = ``;
 
   tasks.forEach((el) => {
-    if (el.status === "completed") {
-      html += ` <div class="task completed" data-id="${el.id}">${el.title}</div>`;
-    } else {
-      html += ` <div class="task" data-id="${el.id}">${el.title}</div>`;
-    }
+    html += ` <div class="task" data-id="${el.id}"> ${
+      el.status == "completed" ? "✅" : ""
+    } ${el.title}</div>`;
   });
 
   taskContainer.insertAdjacentHTML("afterbegin", html);
-};
-
-const openModel = function () {
-  document.querySelector(".todo__title__inp").value = "";
-  document.querySelector(".todo__detail__inp").value = "";
-  model.classList.remove("hidden");
-  overlay.classList.remove("hidden");
-};
-
-const closeModel = function () {
-  model.classList.add("hidden");
-  overlay.classList.add("hidden");
 };
 
 // toggel model
@@ -55,6 +44,7 @@ const toggelModel = function () {
   overlay.classList.toggle("hidden");
 };
 
+// reset form data of model
 const resetModelForm = function () {
   document.querySelector(".todo__title__inp").value = "";
   document.querySelector(".todo__detail__inp").value = "";
@@ -82,11 +72,14 @@ closeModelBtn.addEventListener("click", function () {
 });
 
 saveModelBtn.addEventListener("click", function () {
-  const title = document.querySelector(".todo__title__inp").value;
+  // to cpitalize first letter of the title
+  const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+  const title = capitalize(document.querySelector(".todo__title__inp").value);
   const desc = document.querySelector(".todo__detail__inp").value;
 
-  if (title === "") {
-    alert("enter valid title");
+  if (title === "" && title.length > 100) {
+    alert("enter valid title, length should be > 1 and  < 100");
     return;
   }
 
@@ -107,26 +100,22 @@ saveModelBtn.addEventListener("click", function () {
   // console.log(tasks);
 });
 
+// show task that is clicked
 const renderOpenedTask = function (currTask) {
-  const html = `
-  <div class="ot__heading">Title</div>
-  <div class="ot__text ot__title__text">${currTask.title}</div>
-  <div class="ot__heading">Description</div>
-  <div class="ot__text">${currTask.description}</div>`;
+  taskNameVal.textContent = currTask.title;
+  taskDescVal.textContent = currTask.description;
 
-  openedTask.innerHTML = "";
-  taskCompleteBtn.textContent = currTask.status;
-  openedTask.insertAdjacentHTML("beforeend", html);
+  if (openedTask.classList.contains("hidden"))
+    openedTask.classList.remove("hidden");
 };
 
 taskContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".task");
-  // renderOpenedTask(clicked);
+
   if (!clicked) return;
-  // console.log(clicked);
-  // console.log(clicked.dataset.id);
+
   const currTask = tasks[clicked.dataset.id];
-  // console.log(currTask);
+
   currId = currTask.id;
 
   if (!currTask) return;
@@ -134,13 +123,17 @@ taskContainer.addEventListener("click", function (e) {
   renderOpenedTask(currTask);
 });
 
+// mark task as completed
 taskCompleteBtn.addEventListener("click", function () {
   const currTask = tasks[currId];
-  // console.log("currId = ", currId);
-  // console.log(currTask);
+
+  if (!currTask) return;
+
   currTask.status === "uncomplete"
     ? (currTask.status = "completed")
     : (currTask.status = "uncomplete");
 
   taskCompleteBtn.textContent = currTask.status;
+
+  renderLeftNavTasks();
 });
